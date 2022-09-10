@@ -1,0 +1,22 @@
+{
+  "name": "tiego-aio",
+  "version": "0.0.1",
+  "description": "Sneaker bot focus on lowkey sites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GautierE/tiego-aio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GautierE/tiego-aio/issues"
+  },
+  "homepage": "https://github.com/GautierE/tiego-aio#readme",
+  "dependencies": {
+    "inquirer": "^9.1.1"
+  }
+}
