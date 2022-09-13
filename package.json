@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/GautierE/tiego-aio#readme",
   "dependencies": {
+    "csv": "^6.2.0",
     "got": "^12.4.1",
     "inquirer": "^9.1.1"
   }

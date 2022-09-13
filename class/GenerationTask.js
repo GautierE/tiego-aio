@@ -3,14 +3,14 @@ export default class {
     if (!opts) 
       throw "Error during task creation, make sure to not leave empty lines in accounts.csv file";
     
-    this.lastname = opts.lastname;
-    this.firstname = opts.firstname;
-    this.email = opts.email;
-    this.password = opts.password;
-    this.address = opts.address;
-    this.subAddress = opts.subAddress;
-    this.postcode = opts.postcode;
-    this.city = opts.city;
-    this.phone = opts.phone;
+    this.lastname = opts[0];
+    this.firstname = opts[1];
+    this.email = opts[2];
+    this.password = opts[3];
+    this.address = opts[4];
+    this.subAddress = opts[5];
+    this.postcode = opts[6];
+    this.city = opts[7];
+    this.phone = opts[8];
   }
 }
