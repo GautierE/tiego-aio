@@ -1,14 +1,13 @@
-import generateAccount from "./generateAccount.js";
+import generateAccount from "../generation/generateAccount.js";
 import GenerationTask from "../../class/GenerationTask.js";
 import fs from "fs";
 import {parse} from "csv-parse";
-import {rejects} from "assert";
 
 export default async function () {
   let tasks = await readAccountsFromCsv();
-  for (let i = 0; i < tasks.length; i++) {
+  for (let i = 0; i < 1; i++) {
     console.log("Started generation task number " + i);
-    generateAccount();
+    generateAccount(tasks[i]);
   }
 }
 
