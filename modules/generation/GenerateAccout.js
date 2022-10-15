@@ -9,13 +9,14 @@ export default class extends Functionality {
     this.identity = task;
     this.cookiejar = new tough.CookieJar();
     this.client = got.extend({cookieJar: this.cookiejar});
+    this.request = {};
 
     this.getSession();
   }
 
   async getSession() {
     try {
-      console.log("Getting session...");
+      console.log("Getting session..");
       await this.client.get("https://riotskateshop.fr/");
       this.createAccount();
     } catch (e) {
@@ -25,7 +26,7 @@ export default class extends Functionality {
 
   async createAccount() {
     try {
-      console.log("Creating account...");
+      console.log("Creating account..");
       await this.client.get("https://riotskateshop.fr/connexion", {
         cookieJar: this.cookiejar,
         searchParams: {
@@ -50,17 +51,16 @@ export default class extends Functionality {
     try {
       const getFormAddy = await this.client.get("https://riotskateshop.fr/adresse", {cookieJar: this.cookiejar});
       const csrfRegexp = /<input type="hidden" name="token" value="(.*)">/;
-      let csrfToken = null;
       const splittedPage = getFormAddy.body.split(/\r?\n/);
       splittedPage.map(line => {
         if (line.includes('<input type="hidden" name="token" value="')) {
-          csrfToken = csrfRegexp.exec(line)[1];
+          this.request.csrfToken = csrfRegexp.exec(line)[1];
         }
       });
 
-      if (csrfToken) {
+      if (this.request.csrfToken) {
         console.log("CSRF token found !");
-        this.setAddress(csrfToken);
+        this.setAddress();
       } else {
         console.log("CSRF token not found");
       }
@@ -69,14 +69,14 @@ export default class extends Functionality {
     }
   }
 
-  async setAddress(csrfToken) {
+  async setAddress() {
     try {
-      console.log("Setting new address...");
+      console.log("Setting new address..");
       await this.client.get("https://riotskateshop.fr/adresse", {
         cookieJar: this.cookiejar,
         searchParams: {
           id_address: 0,
-          token: csrfToken,
+          token: this.request.csrfToken,
           firstname: this.identity.firstname,
           lastname: this.identity.lastname,
           address1: this.identity.address,

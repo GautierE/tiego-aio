@@ -5,7 +5,7 @@ import {parse} from "csv-parse";
 
 export default async function () {
   let tasks = await readAccountsFromCsv();
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < tasks.length; i++) {
     console.log("Started generation task number " + i);
     new GenerateAccount(tasks[i]);
   }
