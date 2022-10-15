@@ -1,5 +1,5 @@
-import generateAccount from "../generation/generateAccount.js";
-import GenerationTask from "../../class/GenerationTask.js";
+import GenerateAccount from "../generation/GenerateAccout.js";
+import GenerationTaskInfo from "../../class/GenerationTaskInfo.js";
 import fs from "fs";
 import {parse} from "csv-parse";
 
@@ -7,7 +7,7 @@ export default async function () {
   let tasks = await readAccountsFromCsv();
   for (let i = 0; i < 1; i++) {
     console.log("Started generation task number " + i);
-    generateAccount(tasks[i]);
+    new GenerateAccount(tasks[i]);
   }
 }
 
@@ -16,7 +16,7 @@ async function readAccountsFromCsv() {
     let res = [];
 
     fs.createReadStream("./riotSkateShop/accounts.csv").pipe(parse({delimiter: ",", from_line: 2})).on("data", function (row) {
-      res.push(new GenerationTask(row));
+      res.push(new GenerationTaskInfo(row));
     }).on("end", () => {
       console.log("CSV file successfully processed");
       resolve(res);

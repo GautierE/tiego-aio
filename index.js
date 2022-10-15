@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import startAllTasks from "./modules/tasks/startAllTasks.js";
-import generateAllAccounts from "./modules/generation/generateAllAccounts.js";
+import generateAllAccounts from "./modules/tasks/generateAllAccounts.js";
 import showSettingsMenu from "./settings/showSettingsMenu.js";
 
 console.log("Welcome back Tiego#2953");
