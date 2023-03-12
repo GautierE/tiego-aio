@@ -104,8 +104,8 @@ export default class extends Functionality {
           avatar_url: "",
           content: `Succesful checkout !!\nPaypal link: https://www.paypal.com/checkoutnow?token=${ppToken}`
         };
-
-        await this.client.post("https://discord.com/api/webhooks/1017102208942219284/HY4ZmEh5-bWWYHqY1VYFbIf16ZSkHu8sB4mgDaTqAK3UJZ4bwvjB-Oz6CxJgdbvC6CGA", {
+        //Add webhook
+        await this.client.post("", {
           cookieJar: this.cookiejar,
           headers: {
             "Content-type": "application/json"
